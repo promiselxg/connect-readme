@@ -1,0 +1,169 @@
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-BlackItalic.eot');
+    src: local('Kinn Black Italic'), local('Kinn-BlackItalic'),
+        url('Kinn-BlackItalic.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-BlackItalic.woff2') format('woff2'),
+        url('Kinn-BlackItalic.woff') format('woff'),
+        url('Kinn-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-Black.eot');
+    src: local('Kinn Black'), local('Kinn-Black'),
+        url('Kinn-Black.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-Black.woff2') format('woff2'),
+        url('Kinn-Black.woff') format('woff'),
+        url('Kinn-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-Bold.eot');
+    src: local('Kinn Bold'), local('Kinn-Bold'),
+        url('Kinn-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-Bold.woff2') format('woff2'),
+        url('Kinn-Bold.woff') format('woff'),
+        url('Kinn-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-BoldItalic.eot');
+    src: local('Kinn Bold Italic'), local('Kinn-BoldItalic'),
+        url('Kinn-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-BoldItalic.woff2') format('woff2'),
+        url('Kinn-BoldItalic.woff') format('woff'),
+        url('Kinn-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-BookItalic.eot');
+    src: local('Kinn Book Italic'), local('Kinn-BookItalic'),
+        url('Kinn-BookItalic.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-BookItalic.woff2') format('woff2'),
+        url('Kinn-BookItalic.woff') format('woff'),
+        url('Kinn-BookItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-ExtraLight.eot');
+    src: local('Kinn ExtraLight'), local('Kinn-ExtraLight'),
+        url('Kinn-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-ExtraLight.woff2') format('woff2'),
+        url('Kinn-ExtraLight.woff') format('woff'),
+        url('Kinn-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-Book.eot');
+    src: local('Kinn Book'), local('Kinn-Book'),
+        url('Kinn-Book.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-Book.woff2') format('woff2'),
+        url('Kinn-Book.woff') format('woff'),
+        url('Kinn-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-ExtraLightItalic.eot');
+    src: local('Kinn ExtraLight Italic'), local('Kinn-ExtraLightItalic'),
+        url('Kinn-ExtraLightItalic.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-ExtraLightItalic.woff2') format('woff2'),
+        url('Kinn-ExtraLightItalic.woff') format('woff'),
+        url('Kinn-ExtraLightItalic.ttf') format('truetype');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-HeavyItalic.eot');
+    src: local('Kinn Heavy Italic'), local('Kinn-HeavyItalic'),
+        url('Kinn-HeavyItalic.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-HeavyItalic.woff2') format('woff2'),
+        url('Kinn-HeavyItalic.woff') format('woff'),
+        url('Kinn-HeavyItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-Heavy.eot');
+    src: local('Kinn Heavy'), local('Kinn-Heavy'),
+        url('Kinn-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-Heavy.woff2') format('woff2'),
+        url('Kinn-Heavy.woff') format('woff'),
+        url('Kinn-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-Italic.eot');
+    src: local('Kinn Italic'), local('Kinn-Italic'),
+        url('Kinn-Italic.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-Italic.woff2') format('woff2'),
+        url('Kinn-Italic.woff') format('woff'),
+        url('Kinn-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-Light.eot');
+    src: local('Kinn Light'), local('Kinn-Light'),
+        url('Kinn-Light.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-Light.woff2') format('woff2'),
+        url('Kinn-Light.woff') format('woff'),
+        url('Kinn-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kinn';
+    src: url('Kinn-LightItalic.eot');
+    src: local('Kinn Light Italic'), local('Kinn-LightItalic'),
+        url('Kinn-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('Kinn-LightItalic.woff2') format('woff2'),
+        url('Kinn-LightItalic.woff') format('woff'),
+        url('Kinn-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
