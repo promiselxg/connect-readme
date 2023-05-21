@@ -65,7 +65,7 @@ const getAllEvents = asyncHandler(async (req, res) => {
   res.status(200).json(res.queryResults);
 });
 
-//@desc     Register User
+//@desc     Get Single Event
 //@route    POST /api/v1/eventid
 //@access   Public
 const getSingleEvent = asyncHandler(async (req, res) => {

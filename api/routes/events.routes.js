@@ -11,16 +11,20 @@ import {
 } from '../controllers/event.controller.js';
 import { verifyUserRoles } from '../middlewares/role.middleware.js';
 import { verifyToken } from '../middlewares/auth.middleware.js';
-import { createPaymentIntent } from '../controllers/donation.controller.js';
+import {
+  confirmDonation,
+  createPaymentIntent,
+} from '../controllers/donation.controller.js';
 
 const router = express.Router();
-
+router.route('/:id/confirm').get(confirmDonation);
 router
   .route('/')
   .get(queryFilter(Events, 'created_by', 'email'), getAllEvents)
   .post(registerVolunter);
 router.route('/:eventid').get(getSingleEvent);
 router.route('/:eventid/donate').post(createPaymentIntent);
+
 router
   .route('/upload')
   .post(

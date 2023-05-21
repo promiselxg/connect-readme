@@ -1,12 +1,40 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Modal from './components/modal';
 import Card from './components/card';
 import Image from './components/image';
 import FormToggleContext from './context/FormToggleContext';
 import { FiFilter } from 'react-icons/fi';
+import useFetch from './hooks/useFetch';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+
 function App() {
   const { switchScreen, modal } = useContext(FormToggleContext);
+  const [id, setID] = useState('');
+  const { loading, data } = useFetch('/events');
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    const searchParams = new URLSearchParams(document.location.search);
+    const x = searchParams.get('x');
+    const submitRecord = async () => {
+      await axios.get(`http://localhost:8080/api/v1/events/${x}/confirm`);
+    };
+    submitRecord();
+    if (x) {
+      Swal.fire({
+        title: 'Donation successfull!',
+        text: 'Your donation has been received.',
+        icon: 'success',
+        confirmButtonText: 'Ok',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/');
+        }
+      });
+    }
+  }, []);
   return (
     <>
       <div className="flex w-full py-7 max-h-screen h-screen">
@@ -78,36 +106,24 @@ function App() {
             </div>
           </div>
           <div className="w-full grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-4">
-            <label htmlFor={modal} onClick={() => switchScreen(2345672)}>
-              <Card
-                title="Page title"
-                desc="Let us know what you think of the daily.dev extension on the chrome store!"
-                img="https://plus.unsplash.com/premium_photo-1681406994502-bb673c265877?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwyfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60"
-              />
-            </label>
-            <label htmlFor={modal} onClick={() => switchScreen(222222123)}>
-              <Card
-                title="Page title"
-                desc="Let us know what you think of the daily.dev extension on the chrome store!"
-                img="https://templatekit.jegtheme.com/dyelex/wp-content/uploads/sites/102/2021/06/white-wall-with-triangle-theme-e1623048155565.jpg"
-              />
-            </label>
-            <label htmlFor={modal} onClick={() => switchScreen(11111111)}>
-              <Card
-                title="Page title"
-                desc="Let us know what you think of the daily.dev extension on the chrome store!"
-                img="https://templatekit.jegtheme.com/dyelex/wp-content/uploads/sites/102/2021/06/painting-the-walls-e1623048353262.jpg"
-              />
-            </label>
-            <label htmlFor={modal} onClick={() => switchScreen(2222222)}>
-              <Card
-                title="Page title"
-                desc="Let us know what you think of the daily.dev extension on the chrome store!"
-                img="https://templatekit.jegtheme.com/dyelex/wp-content/uploads/sites/102/2021/06/desk-and-wall-decoration-e1623048343491.jpg"
-              />
-            </label>
+            {loading
+              ? 'loading...'
+              : data?.data?.map((event) => (
+                  <label
+                    htmlFor={modal}
+                    onClick={() => switchScreen(event._id)}
+                    onMouseDown={() => setID(event._id)}
+                    key={event._id}
+                  >
+                    <Card
+                      title={event.title}
+                      desc={event.description}
+                      img={event.image_url}
+                    />
+                  </label>
+                ))}
           </div>
-          <Modal htmlFor={modal} />
+          <Modal htmlFor={modal} id={id} />
         </div>
       </div>
     </>

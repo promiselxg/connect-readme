@@ -1,27 +1,38 @@
 import { useContext, useState } from 'react';
 import FormToggleContext from '../../context/FormToggleContext';
 import axios from 'axios';
-const Modal = () => {
+import useFetch from '../../hooks/useFetch';
+const Modal = ({ id }) => {
   const { modal } = useContext(FormToggleContext);
-  const [loading, setLoading] = useState(false);
   const [paying, setPaying] = useState(false);
   const [amount, setAmount] = useState('');
+  const [currency, setCurrency] = useState('ngn');
+  const { loading, data: singleData } = useFetch(`/events/${id}`);
 
   const data = {
-    currency: 'ngn',
+    currency: currency,
     amount,
+    event_owner: singleData?.response?.created_by,
   };
   const makeDonation = async (e) => {
     e.preventDefault();
+    if (!amount || isNaN(amount)) {
+      return;
+    }
+    if (currency === 'ngn') {
+      if (amount <= 900) {
+        alert('Minimun amount is 10000');
+      }
+    }
     setPaying(true);
     const response = await axios.post(
-      'http://localhost:8080/api/v1/events/646875b3a70d94f90c500046/donate',
+      `http://localhost:8080/api/v1/events/${id}/donate`,
       data
     );
-    setPaying(false);
-    console.log(response.data.data);
     window.location.replace(response.data.data);
+    setPaying(false);
   };
+
   return (
     <>
       <input type="checkbox" id={modal} className="modal-toggle" />
@@ -41,33 +52,39 @@ const Modal = () => {
                 <div className="flex flex-col">
                   <div className="text-sm">
                     <h1 className="font-Kinn py-1">
-                      Title description goes here.
+                      {singleData?.response?.title}
                     </h1>
                   </div>
                   <p className="text-[12px] py-1 font-Heebo ">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Molestiae, necessitatibus id. Nemo ullam aperiam facilis
-                    repellat non pariatur autem quod esse, distinctio nobis ipsa
-                    sunt eaque! Qui amet voluptas maiores.
+                    {singleData?.response?.description}
                   </p>
                   <p className="my-2">
                     <img
-                      src="https://templatekit.jegtheme.com/dyelex/wp-content/uploads/sites/102/2021/06/painting-the-walls-e1623048353262.jpg"
-                      alt="img"
+                      src={singleData?.response?.image_url}
+                      alt={singleData?.response?.title}
                     />
                   </p>
-                  <div className="flex justify-between pt-2">
-                    <div className="flex gap-2">
+                  <div className="flex  pt-2 flex-col">
+                    <div className="flex gap-2 mb-3 flex-col md:flex-row">
                       <input
                         type="number"
                         name="amount"
                         value={amount}
                         onChange={(e) => setAmount(e.target.value)}
                         min="1"
-                        className="w-1/3 px-2 outline-none border-none text-[#000] rounded-[6px]"
+                        className=" flex-col md:w-[25%] px-2 py-2 md:py-0 outline-none border-none text-[#000] rounded-[6px]"
                       />
+                      <select
+                        name="currency"
+                        className="select "
+                        value={currency}
+                        onChange={(e) => setCurrency(e.target.value)}
+                      >
+                        <option value="ngn">NGN</option>
+                        <option value="usd">USD</option>
+                      </select>
                       <button
-                        className="btn gap-2"
+                        className="btn gap-2 w-full md:w-[50%]"
                         onClick={makeDonation}
                         disabled={paying}
                       >

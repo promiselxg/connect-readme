@@ -1,18 +1,19 @@
 import asyncHandler from 'express-async-handler';
 import stripe from 'stripe';
 import Event from '../models/event.model.js';
+import User from '../models/user.model.js';
 import { Novu } from '@novu/node';
-const novu = new Novu(process.env.NOVU_API_KEY);
 
+const novu = new Novu(process.env.NOVU_API_KEY);
 const Stripe = stripe(process.env.STRIPE_SECRET_KEY);
 const createPaymentIntent = asyncHandler(async (req, res) => {
   const { eventid } = req.params;
-  const { amount, currency, customer_email } = req.body;
+  const { amount, currency, event_owner } = req.body;
   try {
     const response = await Event.findById(eventid);
     const session = await Stripe.checkout.sessions.create({
       mode: 'payment',
-      success_url: 'http://localhost:5173?',
+      success_url: 'http://localhost:5173?x=' + event_owner,
       cancel_url: 'http://localhost:4242/cancel',
       line_items: [
         {
@@ -37,9 +38,23 @@ const createPaymentIntent = asyncHandler(async (req, res) => {
   }
 });
 
+const confirmDonation = asyncHandler(async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    // Send user a email
+    await novu.trigger('donation', {
+      to: {
+        subscriberId: user.email,
+        email: user.email,
+      },
+    });
+  } catch (error) {
+    throw new Error(error);
+  }
+});
 const calculateOrderAmount = (amount) => {
   amount = amount * 100;
   return amount;
 };
 
-export { createPaymentIntent };
+export { createPaymentIntent, confirmDonation };
