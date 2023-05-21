@@ -14,6 +14,5 @@
   src: url('./assets/fonts/Heebo-VariableFont_wght.ttf');
 }
 body {
-  background-color: #001217;
-  height: 100%;
+  background: #001217;
 }
