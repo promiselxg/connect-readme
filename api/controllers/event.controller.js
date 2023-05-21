@@ -115,6 +115,7 @@ const registerVolunter = asyncHandler(async (req, res) => {
         message: 'Permission denied',
       });
     }
+    const user = await User.findById(created_by);
     const volunteer = await Volunteer.create({
       volunteer_name,
       volunteer_phone,
@@ -125,7 +126,7 @@ const registerVolunter = asyncHandler(async (req, res) => {
     const sendEmail = await novu.trigger('volunteer', {
       to: {
         subscriberId: volunteer_email,
-        email: created_by,
+        email: user.email,
         phone: volunteer_phone,
       },
     });

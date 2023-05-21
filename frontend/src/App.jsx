@@ -18,10 +18,12 @@ function App() {
   useEffect(() => {
     const searchParams = new URLSearchParams(document.location.search);
     const x = searchParams.get('x');
-    const submitRecord = async () => {
-      await axios.get(`http://localhost:8080/api/v1/events/${x}/confirm`);
-    };
-    submitRecord();
+    if (x) {
+      const submitRecord = async () => {
+        await axios.get(`http://localhost:8080/api/v1/events/${x}/confirm`);
+      };
+      submitRecord();
+    }
     if (x) {
       Swal.fire({
         title: 'Donation successfull!',

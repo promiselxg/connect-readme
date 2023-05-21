@@ -4,7 +4,6 @@ const FormToggleContext = createContext({});
 
 export const FormToggleProvider = ({ children }) => {
   const [modal, setModal] = useState('');
-
   const switchScreen = (elem) => {
     setModal(elem);
   };
