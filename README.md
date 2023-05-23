@@ -10,7 +10,7 @@ Novu - The ultimate service for managing multi-channel notifications with a sing
 
 <h3>Project Topic</h3>
 <h3>Building a notification system for charitable organizations that delivers updates on donations and volunteer opportunities.</h3>
-
+<h3>Description</h3>
 <p>Novu Donate is a platform that can be used to raise funds and offer free volunteering services to both victims of war and children in IDPs.</p>
 
 <h3>Technologies being used</h3>
