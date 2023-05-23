@@ -9,10 +9,11 @@ The ultimate service for managing multi-channel notifications with a single API.
 </div>
 
 <h3>Building a notification system for charitable organizations that delivers updates on donations and volunteer opportunities.</h3>
-<p>Description</p>
-
+<br/>
+<p>Novu Donate is a platform that can be used to raise funds and offer free volunteering services to both victims of war and children in IDPs.</p>
+<br/>
 <h3>Technologies being used</h3>
-<p>NextJS / Python / Laravel / NestJS, anything you can to help us bring the right people to test the project</p>
+<p>ReactJs / NodeJs / MongoDB / Stripe API / Novu API / Cloudinary API</p>
 
 <h3>App Link</h3>
 <p>[Novu Donate](https://novu-donate.netlify.app/)</p>
@@ -24,7 +25,14 @@ The ultimate service for managing multi-channel notifications with a single API.
 <p>Explain what you have build in the most detailed way</p>
 
 <h3>Who are you?</h3>
-<p>Give us your best description who are you, and why you have decided to build this project</p>
+<p>Hi, I'm Promise, a self taught fullstack developer from Nigeria. I love building products that provides value to the end users.</p>
 
 <h3>Additional Resources/Info</h3>
-<p>If you have</p>
+```
+VISA Test Card : 4242 4242 4242 4242 
+CVC : any 3 digits
+Date : Any future Date
+
+```
+
+```
