@@ -46,6 +46,7 @@ const confirmDonation = asyncHandler(async (req, res) => {
       to: {
         subscriberId: user.email,
         email: user.email,
+        phone: user.phone,
       },
     });
   } catch (error) {

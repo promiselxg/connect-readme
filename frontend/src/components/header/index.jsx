@@ -65,7 +65,7 @@ const Header = () => {
       };
 
       try {
-        await axios.post(`http://localhost:8080/api/v1/events/upload`, newPost);
+        await axios.post(`https://novu.braga.com.ng/api/v1/events/upload`, newPost);
         window.location = window.location;
       } catch (error) {
         Swal.fire({

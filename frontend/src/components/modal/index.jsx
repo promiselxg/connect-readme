@@ -35,7 +35,7 @@ const Modal = ({ id }) => {
     }
     setPaying(true);
     const response = await axios.post(
-      `http://localhost:8080/api/v1/events/${id}/donate`,
+      `https://novu.braga.com.ng/api/v1/events/${id}/donate`,
       data
     );
     window.location.replace(response.data.data);
@@ -73,7 +73,7 @@ const Modal = ({ id }) => {
       };
       setIsLoading(true);
       const response = await axios.post(
-        `http://localhost:8080/api/v1/events`,
+        `https://novu.braga.com.ng/api/v1/events`,
         formData
       );
       setIsLoading(false);

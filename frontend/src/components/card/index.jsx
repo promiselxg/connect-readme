@@ -1,3 +1,5 @@
+import TextTruncate from 'react-text-truncate';
+
 const Card = ({ title, desc, img }) => {
   return (
     <>
@@ -6,7 +8,13 @@ const Card = ({ title, desc, img }) => {
           <h1 className="text-[16px] font-[400] font-Kinn text-[#fff]">
             {title}
           </h1>
-          <p className="text-[16px] py-2 font-Heebo">{desc}</p>
+          <TextTruncate
+            line={3}
+            element="p"
+            className="text-[12px] py-2 font-Heebo"
+            truncateText="..."
+            text={desc}
+          />
         </div>
         <figure className="p-2 h-fit md:h-[250px]">
           <img

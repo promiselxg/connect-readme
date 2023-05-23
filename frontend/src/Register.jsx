@@ -41,7 +41,7 @@ const Register = () => {
       };
       setLoading(true);
       const response = await axios.post(
-        `http://localhost:8080/api/v1/auth/register`,
+        `https://novu.braga.com.ng/api/v1/auth/register`,
         formData
       );
       if (response.data.status === false) {

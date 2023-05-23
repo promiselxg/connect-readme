@@ -8,7 +8,7 @@ import jwtDecode from 'jwt-decode';
 const Login = () => {
   const { loading, error, user, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-  const API_URL = 'http://localhost:8080';
+  const API_URL = 'https://novu.braga.com.ng';
   const [inputFields, setInputFields] = useState({
     username: '',
     password: '',

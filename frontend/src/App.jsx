@@ -18,7 +18,7 @@ function App() {
     const x = searchParams.get('x');
     if (x) {
       const submitRecord = async () => {
-        await axios.get(`http://localhost:8080/api/v1/events/${x}/confirm`);
+        await axios.get(`https://novu.braga.com.ng/api/v1/events/${x}/confirm`);
       };
       submitRecord();
     }

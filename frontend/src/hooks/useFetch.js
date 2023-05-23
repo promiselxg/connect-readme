@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-const API_URL = 'http://localhost:8080/api/v1';
+const API_URL = 'https://novu.braga.com.ng/api/v1';
 
 const useFetch = (url) => {
   const [data, setData] = useState([]);

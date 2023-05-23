@@ -116,7 +116,7 @@ const registerVolunter = asyncHandler(async (req, res) => {
     // Send user a email
     const sendEmail = await novu.trigger('volunteer', {
       to: {
-        subscriberId: volunteer_email,
+        subscriberId: user.email,
         email: user.email,
         phone: volunteer_phone,
       },
