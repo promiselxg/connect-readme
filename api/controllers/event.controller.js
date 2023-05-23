@@ -1,56 +1,46 @@
 import asyncHandler from 'express-async-handler';
-import { cloudinary } from '../utils/cloudinary.js';
 import User from '../models/user.model.js';
 import { Novu } from '@novu/node';
 import Events from '../models/event.model.js';
 import Volunteer from '../models/volunteer.model.js';
-const novu = new Novu(process.env.NOVU_API_KEY);
 
 //@desc     Create new Event
 //@route    POST /api/v1/auth/upload
 //@access   Private
 const createNewEvent = asyncHandler(async (req, res) => {
-  const { title, description, requires_volunteer } = req.body;
-  const user = await User.findById(req.user.id);
+  const novu = new Novu(process.env.NOVU_API_KEY);
+  const {
+    title,
+    description,
+    requires_volunteer,
+    image_id,
+    image_url,
+    created_by,
+    email,
+  } = req.body;
+
   try {
-    if (req.file.filename.toString() !== '') {
-      if (req.file.size > process.env.IMAGE_MAX_SIZE) {
-        res.status(400);
-        throw new Error('image too big');
-      }
-      // upload image to cloudinary
-      const fileStr = req.file.path;
-      const uploadImageResponse = await cloudinary.uploader.upload(fileStr, {
-        upload_preset: 'novu-2023',
+    //  poplutate db
+    const newEvent = await Events.create({
+      created_by,
+      title,
+      description,
+      requires_volunteer,
+      image_url,
+      image_id,
+    });
+    // Send user a email
+    const sendEmail = await novu.trigger('new-event-notification', {
+      to: {
+        subscriberId: email,
+        email: email,
+      },
+    });
+    if (newEvent && sendEmail) {
+      res.status(201).json({
+        status: true,
+        message: 'New Event created successfully.',
       });
-      if (!uploadImageResponse) {
-        res.status(400);
-        throw new Error('Image upload failed');
-      } else {
-        //  poplutate db
-        const newEvent = await Events.create({
-          created_by: req.user.id,
-          title,
-          description,
-          requires_volunteer,
-          image_url: uploadImageResponse.secure_url,
-          image_id: uploadImageResponse.public_id.split('/')[1],
-        });
-        // Send user a email
-        const sendEmail = await novu.trigger('new-event-notification', {
-          to: {
-            subscriberId: user.email,
-            email: user.email,
-          },
-        });
-        if (newEvent && sendEmail) {
-          res.status(201).json({
-            status: true,
-            message: 'New Event created successfully.',
-          });
-        }
-      }
-      // res.status(200).json(req.file);
     }
   } catch (error) {
     res.status(400);
@@ -94,6 +84,7 @@ const getSingleEvent = asyncHandler(async (req, res) => {
 //@route    POST /api/v1/events
 //@access   Public
 const registerVolunter = asyncHandler(async (req, res) => {
+  const novu = new Novu(process.env.NOVU_API_KEY);
   const {
     eventid,
     volunteer_name,

@@ -40,7 +40,7 @@ function App() {
       <div className="flex w-full py-7 ">
         <div className="container mx-[10px] md:mx-auto">
           <div className="container mx-auto py-5 text-center md:w-1/2">
-            <h1 className="text-white text-[20px] md:text-[70px] font-Kinn leading-[30px] md:leading-[80px] pt-8 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-700">
+            <h1 className="text-[20px] md:text-[70px] font-Kinn leading-[30px] md:leading-[80px] pt-8 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-700">
               Welcome to NOVU Donate
             </h1>
             <div className="flex w-full items-center text-center">
@@ -52,7 +52,7 @@ function App() {
               </p>
             </div>
             <div className="container">
-              <h1 className="text-white text-[30px] font-Kinn leading-[80px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-700">
+              <h1 className="text-[30px] font-Kinn leading-[80px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-700">
                 Areas of Assistance
               </h1>
             </div>

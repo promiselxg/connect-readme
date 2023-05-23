@@ -9,8 +9,7 @@ import {
   getSingleEvent,
   registerVolunter,
 } from '../controllers/event.controller.js';
-import { verifyUserRoles } from '../middlewares/role.middleware.js';
-import { verifyToken } from '../middlewares/auth.middleware.js';
+
 import {
   confirmDonation,
   createPaymentIntent,
@@ -25,13 +24,6 @@ router
 router.route('/:eventid').get(getSingleEvent);
 router.route('/:eventid/donate').post(createPaymentIntent);
 
-router
-  .route('/upload')
-  .post(
-    verifyToken,
-    verifyUserRoles(Role.user, Role.admin),
-    uploadFile.single('file'),
-    createNewEvent
-  );
+router.route('/upload').post(uploadFile.single('file'), createNewEvent);
 
 export default router;

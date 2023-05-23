@@ -4,9 +4,8 @@ import Event from '../models/event.model.js';
 import User from '../models/user.model.js';
 import { Novu } from '@novu/node';
 
-const novu = new Novu(process.env.NOVU_API_KEY);
-const Stripe = stripe(process.env.STRIPE_SECRET_KEY);
 const createPaymentIntent = asyncHandler(async (req, res) => {
+  const Stripe = stripe(process.env.STRIPE_SECRET_KEY);
   const { eventid } = req.params;
   const { amount, currency, event_owner } = req.body;
   try {
@@ -39,6 +38,7 @@ const createPaymentIntent = asyncHandler(async (req, res) => {
 });
 
 const confirmDonation = asyncHandler(async (req, res) => {
+  const novu = new Novu(process.env.NOVU_API_KEY);
   try {
     const user = await User.findById(req.params.id);
     // Send user a email

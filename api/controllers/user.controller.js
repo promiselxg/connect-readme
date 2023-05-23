@@ -5,20 +5,22 @@ import User from '../models/user.model.js';
 import { Novu } from '@novu/node';
 import ROLES from '../utils/roles.js';
 
-const novu = new Novu(process.env.NOVU_API_KEY);
-
 //@desc     Register User
 //@route    POST /api/v1/auth/register
 //@access   Public
 const registerUser = asyncHandler(async (req, res) => {
+  const novu = new Novu(process.env.NOVU_API_KEY);
   const role = [];
+
   try {
     //  accept incoming variable
     let { username, email, roles, password, confirm_password, phone } =
       req.body;
+
     roles.forEach((r) => {
       role.push(parseInt(r));
     });
+
     //  validate incoming variables
     if (
       !username ||
@@ -28,30 +30,34 @@ const registerUser = asyncHandler(async (req, res) => {
       !email ||
       !phone
     ) {
-      res.status(400);
-      throw new Error('Please fill out the required fields.');
+      return res.status(200).json({
+        status: false,
+        message: 'Please fill out the required fields.',
+      });
     }
     //  check if passwords match
     if (password != confirm_password) {
-      res.status(400);
-      throw new Error('Password Mismatch');
+      return res.status(200).json({
+        status: false,
+        message: 'Password Mismatch',
+      });
     }
     //  check if user already exist
     const userExist = await User.findOne({
       $or: [{ email }, { username }, { phone }],
     });
     if (userExist) {
-      res.status(400);
-      throw new Error(
-        `Username or Email address or Phone number already exist.`
-      );
+      return res.status(200).json({
+        status: false,
+        message: 'Username or Email address or Phone number already exist.',
+      });
     }
     //  hash user password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const isAdmin = role.includes(2200);
     //  create new user
-    const user = await User.create({
+    await User.create({
       username,
       email,
       phone,
@@ -59,30 +65,24 @@ const registerUser = asyncHandler(async (req, res) => {
       role,
       admin: isAdmin,
     });
-    if (user) {
-      //generateCookieResponse(200, res, user.id, ROLES.user);
-      // Send user a welcome email
-      const sendEmail = await novu.trigger('on-boarding', {
-        to: {
-          subscriberId: user.email,
-          email: user.email,
-        },
-        payload: {},
+    // Send user a welcome email
+    const sendEmail = await novu.trigger('on-boarding', {
+      to: {
+        subscriberId: email,
+        email: email,
+      },
+    });
+    if (sendEmail) {
+      return res.status(201).json({
+        status: true,
+        message: 'Registration successfull.',
       });
-      console.log(sendEmail.data.data);
-      if (sendEmail) {
-        return res.status(200).json({
-          status: 'success',
-          message: 'Registration successfull.',
-        });
-      }
-    } else {
-      res.status(400);
-      throw new Error('Inavlid Credentials');
     }
   } catch (error) {
-    res.status(401);
-    throw new Error(error);
+    return res.status(200).json({
+      status: false,
+      message: error,
+    });
   }
 });
 
@@ -101,7 +101,15 @@ const loginUser = asyncHandler(async (req, res) => {
   const user = await User.findOne({ username });
   if (user && (await bcrypt.compare(password, user.password))) {
     const roles = Object.values(user.role);
-    generateCookieResponse(200, res, user.id, roles, user.admin, username);
+    generateCookieResponse(
+      200,
+      res,
+      user.id,
+      roles,
+      user.admin,
+      username,
+      user.email
+    );
   } else {
     return res.status(400).json({
       message: 'Incorrect username or password.',
@@ -132,7 +140,8 @@ const generateCookieResponse = (
   userId,
   userRole,
   isAdmin,
-  username
+  username,
+  email
 ) => {
   const token = generateToken(userId, userRole, isAdmin, username);
   const options = {
@@ -152,6 +161,7 @@ const generateCookieResponse = (
     id: userId,
     isAdmin,
     username,
+    email,
   });
 };
 
