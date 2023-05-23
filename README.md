@@ -8,21 +8,20 @@
 The ultimate service for managing multi-channel notifications with a single API.
 </div>
 
-<h3>Your Topic</h3>
+<h3>Building a notification system for charitable organizations that delivers updates on donations and volunteer opportunities.</h3>
 <p>Description</p>
 
 <h3>Technologies being used</h3>
 <p>NextJS / Python / Laravel / NestJS, anything you can to help us bring the right people to test the project</p>
 
 <h3>App Link</h3>
-<p>If there is</p>
+<p>[Novu Donate](https://novu-donate.netlify.app/)</p>
 
 <h3>Screenshoot</h3>
-<img width="1128" alt="image" src="https://user-images.githubusercontent.com/100117126/235352769-56544ab6-8b0d-47f9-8788-e363c692a594.png">
+<img width="1128" alt="image" src="https://res.cloudinary.com/promiselxg/image/upload/v1684873369/banking/Novu_Donate_pxtxfv.png">
 
 <h3>Description</h3>
 <p>Explain what you have build in the most detailed way</p>
-
 
 <h3>Who are you?</h3>
 <p>Give us your best description who are you, and why you have decided to build this project</p>
