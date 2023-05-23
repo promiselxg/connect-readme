@@ -32,20 +32,22 @@ const Login = () => {
           text: `Invalid username or Password`,
           icon: 'error',
         });
-      }
-      let data = {
-        username: inputFields.username,
-        password: inputFields.password,
-      };
-      const res = await axios.post(`${API_URL}/api/v1/auth/login`, data);
-      if (res.data.success) {
-        dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
-        navigate('/');
+        dispatch({ type: 'LOGIN_FAILURE' });
       } else {
-        dispatch({
-          type: 'LOGIN_FAILURE',
-          payload: { message: `${error.message}` },
-        });
+        let data = {
+          username: inputFields.username,
+          password: inputFields.password,
+        };
+        const res = await axios.post(`${API_URL}/api/v1/auth/login`, data);
+        if (res.data.success) {
+          dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+          navigate('/');
+        } else {
+          dispatch({
+            type: 'LOGIN_FAILURE',
+            payload: { message: `${error.message}` },
+          });
+        }
       }
     } catch (err) {
       dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
@@ -73,7 +75,7 @@ const Login = () => {
     <>
       <div className="container">
         <div className="flex items-center mx-auto w-[90%] md:w-1/3 md:py-10 h-screen">
-          <div className="card w-full bg-base-100 shadow-xl">
+          <div className="card w-full bg-base-100 shadow-xl -mt-[200px] md:-mt-0">
             <div className="card-body">
               <h2 className="card-title">Login</h2>
               <div className="form-control w-full">
@@ -110,7 +112,7 @@ const Login = () => {
               >
                 Login
               </button>
-              <div className="flex gap-1">
+              <div className="flex gap-1 w-full flex-col md:flex-row">
                 Don't have an account?{' '}
                 <Link to="/register" className="underline text-primary">
                   Register here

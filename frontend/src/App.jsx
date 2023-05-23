@@ -39,8 +39,8 @@ function App() {
     <>
       <div className="flex w-full py-7 ">
         <div className="container mx-[10px] md:mx-auto">
-          <div className="container mx-auto py-5 text-center md:w-1/2">
-            <h1 className="text-[20px] md:text-[70px] font-Kinn leading-[30px] md:leading-[80px] pt-8 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-700">
+          <div className="container mx-auto md:py-5 text-center md:w-1/2">
+            <h1 className="text-[25px] md:text-[70px] font-Kinn leading-[30px] md:leading-[80px] pt-8 font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-700">
               Welcome to NOVU Donate
             </h1>
             <div className="flex w-full items-center text-center">
@@ -52,7 +52,7 @@ function App() {
               </p>
             </div>
             <div className="container">
-              <h1 className="text-[30px] font-Kinn leading-[80px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-700">
+              <h1 className="text-[20px] md:text-[30px] font-Kinn leading-[80px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-green-700">
                 Areas of Assistance
               </h1>
             </div>
@@ -60,7 +60,7 @@ function App() {
           <div className="w-full grid grid-cols-1 gap-8 md:grid-cols-3 lg:grid-cols-4">
             {loading ? (
               <>
-                <div className="h-screen">
+                <div className="container mx-[20px] h-full">
                   <h2 className="text-white">loading...</h2>
                 </div>
               </>

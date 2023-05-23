@@ -116,7 +116,7 @@ const Modal = ({ id }) => {
                       alt={singleData?.response?.title}
                     />
                   </p>
-                  <div className="flex  pt-2 flex-col">
+                  <div className="flex  pt-2 flex-col mb-10 md:mb-0">
                     <div className="flex gap-2 mb-3 flex-col md:flex-row">
                       <input
                         type="number"
