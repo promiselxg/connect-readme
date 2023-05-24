@@ -72,8 +72,8 @@ Each of this 3 sections made use of either Email, SMS or/And In-App notification
 <h3>Who are you?</h3>
 <p>Hi, I'm Anuforo Okechukwu Deede, a self taught fullstack developer from Nigeria. I love building software solutions that provides value to the end users.</p>
 
-<h3>Why have you decided to build this project?</h3>
-I wanted to build an application that makes use of at least 3 of the available notification services provided by Novu, this application also needs to be something that can be used in real world.
+<!-- <h3>Why have you decided to build this project?</h3>
+I wanted to build an application that makes use of at least 3 of the available notification services provided by Novu, this application also needs to be something that can be used in real world. -->
 
 #### Additional Resources/Info
 
