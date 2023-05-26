@@ -12,8 +12,8 @@ const createPaymentIntent = asyncHandler(async (req, res) => {
     const response = await Event.findById(eventid);
     const session = await Stripe.checkout.sessions.create({
       mode: 'payment',
-      success_url: 'http://localhost:5173?x=' + event_owner,
-      cancel_url: 'http://localhost:4242/cancel',
+      success_url: 'https://novu-donate.netlify.app?x=' + event_owner,
+      cancel_url: 'https://novu-donate.netlify.app/cancel',
       line_items: [
         {
           price_data: {

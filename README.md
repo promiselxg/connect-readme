@@ -23,7 +23,7 @@ Novu Donate is an open source platform that leveraged by an NGO to use and raise
 ```
 ReactJs -   Frontend
 NodeJs -    Backend
-Novu -      Notification
+Novu -      Notification infrastructure
 Stripe -    Payment
 Cloudinary- Image respository
 MongoDB -   Database
