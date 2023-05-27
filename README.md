@@ -14,7 +14,7 @@ Novu - The ultimate service for managing multi-channel notifications with a sing
 
 #### Description
 
-Novu Donate is an open source platform that leveraged by an NGO to use and raise Donations and Volunteering services to people living with disabilities, victims of War, etc.
+Novu Donate is an open source platform that can be leveraged by an NGO to use and raise Donations and Volunteering services to people living with disabilities, victims of War, etc.
 
 #### Technologies being used
 
