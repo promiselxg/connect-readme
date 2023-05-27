@@ -14,7 +14,7 @@ Novu - The ultimate service for managing multi-channel notifications with a sing
 
 #### Description
 
-Novu Donate is an open source platform that leveraged by an NGO to use and raise Donations and Volunteering services to people living in disabilities, victims of War, etc.
+Novu Donate is an open source platform that leveraged by an NGO to use and raise Donations and Volunteering services to people living with disabilities, victims of War, etc.
 
 #### Technologies being used
 
@@ -46,12 +46,12 @@ Novu Donate is a web based charity donation and volunteering platform where peop
 2.  The Donation Section
 3.  The Volunteer Section.
 
-Each of this 3 sections made use of either Email, SMS or/And In-App notification services of Novu.
+Each of these 3 sections made use of either Email, SMS or/And In-App notification services of Novu.
 
 #### How it Works
 
 1.  The site owner creates a new event(Must be authenticated to do this)
-    - the option to indicate if this new event woul require volunteering service or not
+    - the option to indicate if this new event would require volunteering service or not
 2.  The created event is listed on the app home page for all to see
 3.  Someone visits the website, goes through all the listed event's that requires donation and/or volunteer
     - The site visitor clicks on a particular event to either make a donation or volunter to help or both.
@@ -59,21 +59,25 @@ Each of this 3 sections made use of either Email, SMS or/And In-App notification
     - the user can choose one of the available currency (USD or NGN)
     - you will be redirected to Stripe to complete the transaction.
 5.  for volunteer,
-    - fill out the form and an Email notification will be sent to the provided email address
+    - Fill out the form and submit
+    - An Email notification will be sent to the provided email address. 
+    - An SMS notification will be sent to the phone number submitted during registration. 
 
 #### Notification flow
 
-1. Create new Event - User received In-App and Email notification
-2. Makes a donation - The creator of the event receives an SMS, In-App and Email notification
+1. Create new Event 
+     - The User receives In-App and Email notification
+2. Makes a donation 
+     - The creator of the event receives an SMS, In-App and Email notification
 3. Volunteers
    - The creator of the event receives an In-App and Email notification
    - The volunteer also gets an SMS notification
 
-<h3>Who are you?</h3>
+#### Who are you?
 <p>Hi, I'm Anuforo Okechukwu Deede, a self taught fullstack developer from Nigeria. I love building software solutions that provides value to the end users.</p>
 
-<!-- <h3>Why have you decided to build this project?</h3>
-I wanted to build an application that makes use of at least 3 of the available notification services provided by Novu, this application also needs to be something that can be used in real world. -->
+
+
 
 #### Additional Resources/Info
 
