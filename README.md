@@ -103,7 +103,7 @@ Date : Any future Date
 #### Login Details
 
 ```
-Username : Promiselxg
+Username : promiselxg
 Password : 123456
 ```
 
